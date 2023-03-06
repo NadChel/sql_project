@@ -12,10 +12,12 @@ public class Test {
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
-            Employee me = new Employee("Sergey", "Zolotaryov",
-                    "Fancy Stuff Department", 200_000);
+            Employee robotnik = new Employee("Ivo", "Robotnik",
+                    "Engineering Department", 1_000_000);
+            Employee someoneElse = new Employee("Someone", "Else", "Some Department", 1000);
             session.beginTransaction();
-            session.save(me);
+            session.save(robotnik);
+            session.save(someoneElse);
             session.getTransaction().commit();
         }
     }
