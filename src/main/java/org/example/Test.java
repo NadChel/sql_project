@@ -10,14 +10,13 @@ public class Test {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
                 .buildSessionFactory()) {
-
-            Session session = sessionFactory.getCurrentSession();
+            Session session = sessionFactory.openSession();
             Employee robotnik = new Employee("Ivo", "Robotnik",
                     "Engineering Department", 1_000_000);
-            Employee someoneElse = new Employee("Someone", "Else", "Some Department", 1000);
+//            Employee someoneElse = new Employee("Someone", "Else", "Some Department", 1000);
             session.beginTransaction();
-            session.save(robotnik);
-            session.save(someoneElse);
+            session.persist(robotnik);
+//            session.persist(someoneElse);
             session.getTransaction().commit();
         }
     }
